@@ -4,7 +4,11 @@ pipeline{
         maven 'Maven'  
     }
     stages{
-        
+        stage('GIT'){
+            steps{
+                git branch:'main', url: 'https:github.com/Tejaswini2808/Teju-Docker.git
+            }
+        }
         stage("build"){
             steps{
                 sh 'mvn clean install package'
