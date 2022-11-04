@@ -17,7 +17,7 @@ pipeline{
         stage('Deploy') {
             steps {
                 script{
-                deploy adapters: [tomcat9(credentialsId: '6cf8c691-dffc-4427-a663-2a3c7649fb5b', path: '', url: 'http://35.78.181.123:8081')], contextPath: 'Jenkinsfile', war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: '6cf8c691-dffc-4427-a663-2a3c7649fb5b', path: '', url: 'http://35.78.181.123:8081')], contextPath: '/Jenkinsfile', war: 'webapp/target/*.war'
                 }
             }
         }
