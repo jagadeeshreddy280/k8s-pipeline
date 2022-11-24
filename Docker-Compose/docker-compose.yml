@@ -1,0 +1,14 @@
+version: '3.0'
+services: 
+ web:
+    build: /home/ec2-user/Sample
+    image: dimage
+    container_name: dcontainer
+    ports:
+      - "8088:8888"
+ web1:
+    build: /home/ec2-user/Sample_Project
+    image: dockerimage
+    container_name: dockercontainer
+    ports:
+      - "8023:8080"
