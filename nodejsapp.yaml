@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-app-deployment-jenkins
+  namespace: nodejs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodejs
+  template:
+    metadata:
+      labels:
+        app: nodejs
+    spec:
+      containers:
+      - name: nodejs-app
+        image: node-app:latest
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodejs-jenkins
+  namespace: nodejs
+spec:
+  selector:
+    app: nodejs
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 3000
+      nodePort: 32009
+      targetPort: 3000
